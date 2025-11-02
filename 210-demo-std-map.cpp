@@ -10,17 +10,14 @@ int main() {
 
     // insert elements into the map
     // note how the right-hand side of the assignment are the vector elements
-    villagerFRI["Audie"] = make_tuple(2, "mouse", "Tom");
-    villagerFRI["Raymond"] = make_tuple(8, "Gray", "White");
-    villagerFRI.insert({"Marshal", {"Blue", "White", "Black"}});
+    villagerFRI["Tom"] = make_tuple(2, "mouse", "I HAVE TO RUN");
+    villagerFRI["Jerry"] = make_tuple(8, "cat", "COME HERE TOM");
+    villagerFRI.insert({"Doopy", make_tuple(6, "fish", "Look at those two")});
 
     // access the map using a range-based for loop
     cout << "Villagers and their favorite colors (range-based for loop):" << endl;
     for (auto pair : villagerFRI) {
-        cout << pair.first << ": ";
-        for (auto color : pair.second)
-            cout << color << " ";
-        cout << endl;
+        cout << pair.first << ": [" << get<0>(villagerFRI["Tom"]) << ", " << get<1>(villagerFRI["Tom"]) << ", " << get<3>(villagerFRI["Tom"]);
     }
 
     // access the map using iterators
