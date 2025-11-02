@@ -15,34 +15,27 @@ int main() {
     villagerFRI.insert({"Doopy", make_tuple(6, "fish", "Look at those two")});
 
     // access the map using a range-based for loop
-    cout << "Villagers and their favorite colors (range-based for loop):" << endl;
+    cout << "Villagers and their Friendship:" << endl;
     for (auto pair : villagerFRI) {
-        cout << pair.first << ": [" << get<0>(villagerFRI["Tom"]) << ", " << get<1>(villagerFRI["Tom"]) << ", " << get<3>(villagerFRI["Tom"]);
+        cout << pair.first << ": [" << get<0>(pair.second) << ", " << get<1>(pair.second)<< ", " << get<2>(pair.second)<< "]" << endl;
     }
 
     // access the map using iterators
     cout << "\nVillagers and their favorite colors (iterators):" << endl;
-    for (map<string, tuple<int, string, string>> villagerFRI::iterator it = villagerFRI.begin(); 
+    for (map<string, tuple<int, string, string>>::iterator it = villagerFRI.begin(); 
                                                it != villagerFRI.end(); ++it) {
-        cout << it->first << ": ";
-        for (auto color : it->second) {
-            cout << color << " ";
-        }
-        cout << endl;
+        cout << it->first << ": ["<< get<0>(it->second) << ", " << get<1>(it->second) << ", " << get<2>(it->second) << "]" << endl;
     }
 
     // delete an element
-    villagerFRI.erase("Raymond");
+    villagerFRI.erase("Jerry");
 
     // search for an element using .find() to avoid errors
-    string searchKey = "Audie";
+    string searchKey = "Doopy";
     auto it = villagerFRI.find(searchKey);
     if (it != villagerFRI.end()) {  // the iterator points to beyond the end of the map
                                        // if searchKey is not found
-        cout << "\nFound " << searchKey << "'s favorite colors: ";
-        for (auto color : it->second)  // range loop to traverse the value/vector
-            cout << color << " ";
-        cout << endl;
+        cout << "\nFound " << searchKey << ": [" << get<0>(it->second) << ", " << get<1>(it->second) << ", "<< get<2>(it->second) << "]" << endl;
     } else
         cout << endl << searchKey << " not found." << endl;
 
