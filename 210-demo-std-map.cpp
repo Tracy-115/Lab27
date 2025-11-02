@@ -15,13 +15,13 @@ int main() {
     villagerFRI.insert({"Doopy", make_tuple(6, "fish", "Look at those two")});
 
     // access the map using a range-based for loop
-    cout << "Villagers and their Friendship:" << endl;
+    cout << "Villagers and their informations:" << endl;
     for (auto pair : villagerFRI) {
         cout << pair.first << ": [" << get<0>(pair.second) << ", " << get<1>(pair.second)<< ", " << get<2>(pair.second)<< "]" << endl;
     }
-
+ 
     // access the map using iterators
-    cout << "\nVillagers and their favorite colors (iterators):" << endl;
+    cout << "\nVillagers and their information (iterators):" << endl;
     for (map<string, tuple<int, string, string>>::iterator it = villagerFRI.begin(); 
                                                it != villagerFRI.end(); ++it) {
         cout << it->first << ": ["<< get<0>(it->second) << ", " << get<1>(it->second) << ", " << get<2>(it->second) << "]" << endl;
